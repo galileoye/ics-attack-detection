@@ -275,6 +275,10 @@ node n16 {
     network-config {
 	hostname Controller1
 	!
+	interface eth1
+	 ip address 10.0.6.11/24
+	 ipv6 address 2001:6::11/64
+	!
 	interface eth0
 	 ip address 10.0.2.13/24
 	 ipv6 address 2001:2::13/64
@@ -284,6 +288,7 @@ node n16 {
     iconcoords {505.0 748.0}
     labelcoords {505.0 780.0}
     interface-peer {eth0 n8}
+    interface-peer {eth1 n18}
 }
 
 node n17 {
@@ -291,6 +296,10 @@ node n17 {
     model host
     network-config {
 	hostname Controller2
+	!
+	interface eth1
+	 ip address 10.0.7.11/24
+	 ipv6 address 2001:7::11/64
 	!
 	interface eth0
 	 ip address 10.0.3.12/24
@@ -301,6 +310,41 @@ node n17 {
     iconcoords {696.0 746.0}
     labelcoords {696.0 778.0}
     interface-peer {eth0 n9}
+    interface-peer {eth1 n19}
+}
+
+node n18 {
+    type router
+    model host
+    network-config {
+	hostname sensors1
+	!
+	interface eth0
+	 ip address 10.0.6.10/24
+	 ipv6 address 2001:6::10/64
+	!
+    }
+    canvas c1
+    iconcoords {506.0 841.0}
+    labelcoords {506.0 873.0}
+    interface-peer {eth0 n16}
+}
+
+node n19 {
+    type router
+    model host
+    network-config {
+	hostname sensors2
+	!
+	interface eth0
+	 ip address 10.0.7.10/24
+	 ipv6 address 2001:7::10/64
+	!
+    }
+    canvas c1
+    iconcoords {695.0 843.0}
+    labelcoords {695.0 875.0}
+    interface-peer {eth0 n17}
 }
 
 link l1 {
@@ -383,13 +427,23 @@ link l16 {
     bandwidth 0
 }
 
+link l17 {
+    nodes {n18 n16}
+    bandwidth 0
+}
+
+link l18 {
+    nodes {n19 n17}
+    bandwidth 0
+}
+
 annotation a1 {
     iconcoords {362.0 217.0 838.0 459.0}
     type rectangle
     label {}
     labelcolor black
     fontfamily {Arial}
-    fontsize 12
+    fontsize {12}
     color #ffffff
     width 1
     border black
@@ -403,7 +457,7 @@ annotation a2 {
     label {Information System Area}
     labelcolor black
     fontfamily {Arial}
-    fontsize 12
+    fontsize {12}
     canvas c1
 }
 
@@ -434,7 +488,7 @@ annotation a5 {
     label {}
     labelcolor black
     fontfamily {Arial}
-    fontsize 12
+    fontsize {12}
     color #78ced6
     width 0
     border black
@@ -448,7 +502,7 @@ annotation a6 {
     label {Zone1}
     labelcolor black
     fontfamily {Arial}
-    fontsize 12
+    fontsize {12}
     canvas c1
 }
 
@@ -465,7 +519,7 @@ annotation a8 {
     label {Zone2}
     labelcolor black
     fontfamily {Arial}
-    fontsize 12
+    fontsize {12}
     canvas c1
 }
 
@@ -475,7 +529,52 @@ annotation a9 {
     label {Monitoring and Control}
     labelcolor black
     fontfamily {Arial}
+    fontsize {12}
+    canvas c1
+}
+
+annotation a10 {
+    iconcoords {836.0 887.0 837.0 888.0}
+    type rectangle
+    label {}
+    labelcolor black
+    fontfamily {Arial}
     fontsize 12
+    color #C0C0FF
+    width 0
+    border black
+    rad 25
+    canvas c1
+}
+
+annotation a11 {
+    iconcoords {362.0 791.0 840.0 910.0}
+    type rectangle
+    label {}
+    labelcolor black
+    fontfamily {Arial}
+    fontsize 12
+    color #cefbff
+    width 1
+    border black
+    rad 0
+    canvas c1
+}
+
+annotation a12 {
+    iconcoords {548.0 890.0}
+    type text
+    label {Field Instruments}
+    labelcolor black
+    fontfamily {Arial}
+    fontsize 12
+    canvas c1
+}
+
+annotation a13 {
+    type text
+    iconcoords {645.0 840.0}
+    label {}
     canvas c1
 }
 
@@ -488,7 +587,7 @@ canvas c1 {
 
 option global {
     interface_names no
-    ip_addresses no
+    ip_addresses yes
     ipv6_addresses no
     node_labels yes
     link_labels yes
