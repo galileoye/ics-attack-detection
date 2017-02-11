@@ -1,4 +1,5 @@
 #RTU Server
+from config import *
 from pymodbus.server.sync import StartTcpServer
 
 from pymodbus.device import ModbusDeviceIdentification
@@ -14,4 +15,4 @@ store = ModbusSlaveContext(di = ModbusSequentialDataBlock(0, [0]*100))
 context = ModbusServerContext(slaves=store, single=True)
 identity = ModbusDeviceIdentification()
 
-StartTcpServer(context, identity=identity, address=("10.0.6.11", 6060))
+StartTcpServer(context, identity=identity, address=(CONTROLLER_IP, CONTROLLER_PORT))

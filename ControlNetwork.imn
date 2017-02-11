@@ -40,13 +40,14 @@ node n3 {
 	!
     }
     canvas c1
-    iconcoords {601.0 362.0}
-    labelcoords {601.0 386.0}
+    iconcoords {601.0 359.0}
+    labelcoords {601.0 383.0}
     interface-peer {e0 n2}
     interface-peer {e1 n4}
     interface-peer {e2 n5}
     interface-peer {e3 n6}
     interface-peer {e4 n7}
+    interface-peer {e5 n12}
 }
 
 node n4 {
@@ -61,8 +62,8 @@ node n4 {
 	!
     }
     canvas c1
-    iconcoords {504.0 361.0}
-    labelcoords {504.0 393.0}
+    iconcoords {456.0 360.0}
+    labelcoords {456.0 392.0}
     interface-peer {eth0 n3}
 }
 
@@ -78,8 +79,8 @@ node n5 {
 	!
     }
     canvas c1
-    iconcoords {698.0 363.0}
-    labelcoords {698.0 395.0}
+    iconcoords {744.0 360.0}
+    labelcoords {744.0 392.0}
     interface-peer {eth0 n3}
 }
 
@@ -163,10 +164,6 @@ node n10 {
     network-config {
 	hostname OPC1
 	!
-	interface eth1
-	 ip address 10.0.4.10/24
-	 ipv6 address 2001:4::10/64
-	!
 	interface eth0
 	 ip address 10.0.2.11/24
 	 ipv6 address 2001:2::11/64
@@ -176,7 +173,14 @@ node n10 {
     iconcoords {406.0 650.0}
     labelcoords {406.0 682.0}
     interface-peer {eth0 n8}
-    interface-peer {eth1 n12}
+    custom-config {
+	custom-config-id service:UserDefined
+	custom-command UserDefined
+	config {
+	files=('', )
+	}
+    }
+    services {DefaultRoute SSH UserDefined}
 }
 
 node n11 {
@@ -184,10 +188,6 @@ node n11 {
     model host
     network-config {
 	hostname OPC2
-	!
-	interface eth1
-	 ip address 10.0.5.10/24
-	 ipv6 address 2001:5::10/64
 	!
 	interface eth0
 	 ip address 10.0.3.11/24
@@ -198,41 +198,6 @@ node n11 {
     iconcoords {791.0 649.0}
     labelcoords {791.0 681.0}
     interface-peer {eth0 n9}
-    interface-peer {eth1 n13}
-}
-
-node n12 {
-    type router
-    model PC
-    network-config {
-	hostname SCADA1
-	!
-	interface eth0
-	 ip address 10.0.4.20/24
-	 ipv6 address 2001:4::20/64
-	!
-    }
-    canvas c1
-    iconcoords {405.0 575.0}
-    labelcoords {405.0 607.0}
-    interface-peer {eth0 n10}
-}
-
-node n13 {
-    type router
-    model PC
-    network-config {
-	hostname SCADA2
-	!
-	interface eth0
-	 ip address 10.0.5.20/24
-	 ipv6 address 2001:5::20/64
-	!
-    }
-    canvas c1
-    iconcoords {790.0 576.0}
-    labelcoords {790.0 608.0}
-    interface-peer {eth0 n11}
 }
 
 node n14 {
@@ -247,8 +212,8 @@ node n14 {
 	!
     }
     canvas c1
-    iconcoords {409.0 745.0}
-    labelcoords {409.0 777.0}
+    iconcoords {409.0 552.0}
+    labelcoords {409.0 584.0}
     interface-peer {eth0 n8}
 }
 
@@ -264,8 +229,8 @@ node n15 {
 	!
     }
     canvas c1
-    iconcoords {795.0 746.0}
-    labelcoords {795.0 778.0}
+    iconcoords {791.0 554.0}
+    labelcoords {791.0 586.0}
     interface-peer {eth0 n9}
 }
 
@@ -289,6 +254,21 @@ node n16 {
     labelcoords {505.0 780.0}
     interface-peer {eth0 n8}
     interface-peer {eth1 n18}
+    services {DefaultRoute SSH UserDefined}
+    custom-config {
+	custom-config-id service:UserDefined
+	custom-command UserDefined
+	config {
+	dirs=
+	files=
+	startidx=50
+	cmdup=
+	cmddown=
+	cmdval=
+	meta=Customize this service to do anything upon startup.
+	starttime=
+	}
+    }
 }
 
 node n17 {
@@ -328,6 +308,8 @@ node n18 {
     iconcoords {506.0 841.0}
     labelcoords {506.0 873.0}
     interface-peer {eth0 n16}
+    services {DefaultRoute SSH UserDefined}
+    custom-image /home/manikanta/Security_UGP/icons/sensor.png
 }
 
 node n19 {
@@ -345,6 +327,24 @@ node n19 {
     iconcoords {695.0 843.0}
     labelcoords {695.0 875.0}
     interface-peer {eth0 n17}
+    custom-image /home/manikanta/Security_UGP/icons/sensor.png
+}
+
+node n12 {
+    type router
+    model PC
+    network-config {
+	hostname CADS
+	!
+	interface eth0
+	 ip address 10.0.1.20/24
+	 ipv6 address 2001:1::20/64
+	!
+    }
+    canvas c1
+    iconcoords {600.0 425.0}
+    labelcoords {600.0 457.0}
+    interface-peer {eth0 n3}
 }
 
 link l1 {
@@ -392,18 +392,8 @@ link l9 {
     bandwidth 0
 }
 
-link l10 {
-    nodes {n10 n12}
-    bandwidth 0
-}
-
 link l11 {
     nodes {n9 n11}
-    bandwidth 0
-}
-
-link l12 {
-    nodes {n11 n13}
     bandwidth 0
 }
 
@@ -437,6 +427,11 @@ link l18 {
     bandwidth 0
 }
 
+link l10 {
+    nodes {n3 n12}
+    bandwidth 0
+}
+
 annotation a1 {
     iconcoords {362.0 217.0 838.0 459.0}
     type rectangle
@@ -452,7 +447,7 @@ annotation a1 {
 }
 
 annotation a2 {
-    iconcoords {521.0 309.0}
+    iconcoords {515.0 307.0}
     type text
     label {Information System Area}
     labelcolor black
@@ -474,7 +469,7 @@ annotation a4 {
     label {}
     labelcolor black
     fontfamily {Arial}
-    fontsize 12
+    fontsize {12}
     color #fbc09a
     width 0
     border black
@@ -539,7 +534,7 @@ annotation a10 {
     label {}
     labelcolor black
     fontfamily {Arial}
-    fontsize 12
+    fontsize {12}
     color #C0C0FF
     width 0
     border black
@@ -553,7 +548,7 @@ annotation a11 {
     label {}
     labelcolor black
     fontfamily {Arial}
-    fontsize 12
+    fontsize {12}
     color #cefbff
     width 1
     border black
@@ -567,7 +562,7 @@ annotation a12 {
     label {Field Instruments}
     labelcolor black
     fontfamily {Arial}
-    fontsize 12
+    fontsize {12}
     canvas c1
 }
 
@@ -587,7 +582,7 @@ canvas c1 {
 
 option global {
     interface_names no
-    ip_addresses yes
+    ip_addresses no
     ipv6_addresses no
     node_labels yes
     link_labels yes
