@@ -15,7 +15,7 @@ client.connect()
 client.write_register(L1, 90)
 client.write_register(L2, 40)
 client.write_register(T1, 95)
-client.write_register(T2, 0)
+client.write_register(T2, 50)
 client.write_register(V1, 0)
 client.write_register(V2, 0)
 client.write_register( P, 0)
@@ -44,4 +44,3 @@ while True:
     f3 = client.read_holding_registers(F3, 1).registers[0]
     h  = client.read_holding_registers( H, 1).registers[0]
 
-    
