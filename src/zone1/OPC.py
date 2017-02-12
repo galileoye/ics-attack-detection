@@ -20,3 +20,23 @@ while 1:
         continue
     t = time.time()
     #Do Something
+
+    #Get register values. Some from field. Some from ISA above
+    l1 = field_client.read_holding_registers(L1, 1).registers[0]
+    l2 = isa_client.read_holding_registers(L2, 1).registers[0]
+    t1 = field_client.read_holding_registers(T1, 1).registers[0]
+    t2 = isa_client.read_holding_registers(T2, 1).registers[0]
+    v1 = isa_client.read_holding_registers(V1, 1).registers[0]
+    v2 = field_client.read_holding_registers(V2, 1).registers[0]
+    p  = isa_client.read_holding_registers( P, 1).registers[0]
+    f1 = isa_client.read_holding_registers(F1, 1).registers[0]
+    f2 = field_client.read_holding_registers(F2, 1).registers[0]
+    f3 = isa_client.read_holding_registers(F3, 1).registers[0]
+    h  = field_client.read_holding_registers( H, 1).registers[0]
+
+    #write values to isa registers
+    isa_client.write_register(L1, l1)
+    isa_client.write_register(T1, t1)
+    isa_client.write_register(V2, v2)
+    isa_client.write_register(F2, f2)
+    isa_client.write_register( H,  h)

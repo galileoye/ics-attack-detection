@@ -33,7 +33,9 @@ while 1:
     f3 = opc2_client.read_holding_registers(F3, 1).registers[0]
     h  = opc1_client.read_holding_registers( H, 1).registers[0]
 
-    #write to the register of the other zone
+    #Do something! Maybe logging
+
+    #Write to the register of the other zone
     opc2_client.write_register(L1, l1)
     opc1_client.write_register(L2, l2)
     opc2_client.write_register(T1, t1)
@@ -45,5 +47,4 @@ while 1:
     opc2_client.write_register(F2, f2)
     opc1_client.write_register(F3, f3)
     opc2_client.write_register( H,  h)
-    
     
