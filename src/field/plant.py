@@ -32,4 +32,16 @@ while True:
     while time.time() - t < 1:
         continue
     # Do something here
+    l1 = client.read_holding_registers(L1, 1).registers[0]
+    l2 = client.read_holding_registers(L2, 1).registers[0]
+    t1 = client.read_holding_registers(T1, 1).registers[0]
+    t2 = client.read_holding_registers(T2, 1).registers[0]
+    v1 = client.read_holding_registers(V1, 1).registers[0]
+    v2 = client.read_holding_registers(V2, 1).registers[0]
+    p  = client.read_holding_registers( P, 1).registers[0]
+    f1 = client.read_holding_registers(F1, 1).registers[0]
+    f2 = client.read_holding_registers(F2, 1).registers[0]
+    f3 = client.read_holding_registers(F3, 1).registers[0]
+    h  = client.read_holding_registers( H, 1).registers[0]
+
     

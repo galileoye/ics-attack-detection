@@ -34,6 +34,20 @@ while 1:
     f3 = isa_client.read_holding_registers(F3, 1).registers[0]
     h  = field_client.read_holding_registers( H, 1).registers[0]
 
+    if t1 > 90:
+        h = 0
+    
+    if t1 < 60:
+        h = 1
+
+    if l1 > 85:
+        v2 = 1
+
+    if l1 < 50:
+        v2 = 0
+
+
+
     #write values to isa registers
     isa_client.write_register(L1, l1)
     isa_client.write_register(T1, t1)
