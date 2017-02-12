@@ -13,6 +13,11 @@ opc1_client.connect()
 opc2_client = ModbusTcpClient(OPC2_IP, OPC2_PORT)
 opc2_client.connect()
 
+while 1:
+    if time.time()%60 == 0:
+        break
+
+
 t = time.time()
 
 while 1:
@@ -34,7 +39,20 @@ while 1:
     h  = opc1_client.read_holding_registers( H, 1).registers[0]
 
     #Do something! Maybe logging
-
+    print(
+        "L1 ",l1,",",
+        "L2 ",l2,",",
+        "T1 ",t1,",",
+        "T2 ",t2,",",
+        "V1 ",v1,",",
+        "V2 ",v2,",",
+        "P  ",p,",",
+        "F1 ",f1,",",
+        "F2 ",f2,",",
+        "F3 ",f3,",",
+        "H  ",h,",",
+        "\n"
+    )
     #Write to the register of the other zone
     opc2_client.write_register(L1, l1)
     opc1_client.write_register(L2, l2)

@@ -2,7 +2,7 @@ FIELD_IP = '10.0.2.15'
 FIELD_PORT = 6060
 
 OPC1_IP = '10.0.2.11'
-OPC1_PORT = '6061'
+OPC1_PORT = 6061
 
 
 #Process Variables

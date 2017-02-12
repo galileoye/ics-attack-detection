@@ -288,25 +288,6 @@ node n12 {
     interface-peer {eth0 n3}
 }
 
-node n13 {
-    type router
-    model host
-    network-config {
-	hostname sensors
-	!
-	interface eth0
-	 ip address 10.0.2.15/24
-	 ipv6 address 2001:2::15/64
-	!
-    }
-    canvas c1
-    iconcoords {601.0 937.0}
-    labelcoords {601.0 969.0}
-    services {DefaultRoute SSH UserDefined}
-    custom-image /home/manikanta/Security_UGP/icons/sensor.png
-    interface-peer {eth0 n17}
-}
-
 node n20 {
     type router
     model host
@@ -387,9 +368,27 @@ node n17 {
     interface-peer {e1 n16}
     interface-peer {e2 n20}
     interface-peer {e3 n18}
-    interface-peer {e4 n13}
     interface-peer {e5 n19}
     interface-peer {e6 n21}
+    interface-peer {e4 n13}
+}
+
+node n13 {
+    type router
+    model host
+    network-config {
+	hostname Data
+	!
+	interface eth0
+	 ip address 10.0.2.15/24
+	 ipv6 address 2001:2::15/64
+	!
+    }
+    canvas c1
+    iconcoords {601.0 935.0}
+    labelcoords {601.0 967.0}
+    interface-peer {eth0 n17}
+    custom-image /home/manikanta/Security_UGP/icons/sensor.png
 }
 
 link l1 {
@@ -483,11 +482,6 @@ link l19 {
     bandwidth 0
 }
 
-link l20 {
-    nodes {n13 n17}
-    bandwidth 0
-}
-
 link l21 {
     nodes {n19 n17}
     bandwidth 0
@@ -495,6 +489,11 @@ link l21 {
 
 link l22 {
     nodes {n21 n17}
+    bandwidth 0
+}
+
+link l20 {
+    nodes {n17 n13}
     bandwidth 0
 }
 

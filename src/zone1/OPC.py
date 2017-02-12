@@ -13,6 +13,11 @@ field_client.connect()
 isa_client = ModbusTcpClient(OPC1_IP, OPC1_PORT)
 isa_client.connect()
 
+while 1:
+    if time.time()%60 == 0:
+        break
+
+
 t = time.time()
 
 while 1:
