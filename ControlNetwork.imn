@@ -140,7 +140,7 @@ node n8 {
     interface-peer {e0 n6}
     interface-peer {e1 n10}
     interface-peer {e2 n14}
-    interface-peer {e3 n16}
+    interface-peer {e3 n22}
 }
 
 node n9 {
@@ -154,8 +154,8 @@ node n9 {
     labelcoords {697.0 674.0}
     interface-peer {e0 n7}
     interface-peer {e1 n11}
-    interface-peer {e2 n17}
     interface-peer {e3 n15}
+    interface-peer {e2 n16}
 }
 
 node n10 {
@@ -234,100 +234,41 @@ node n15 {
     interface-peer {eth0 n9}
 }
 
-node n16 {
-    type router
-    model host
-    network-config {
-	hostname Controller1
-	!
-	interface eth1
-	 ip address 10.0.6.11/24
-	 ipv6 address 2001:6::11/64
-	!
-	interface eth0
-	 ip address 10.0.2.13/24
-	 ipv6 address 2001:2::13/64
-	!
-    }
-    canvas c1
-    iconcoords {505.0 748.0}
-    labelcoords {505.0 780.0}
-    interface-peer {eth0 n8}
-    interface-peer {eth1 n18}
-    services {DefaultRoute SSH UserDefined}
-    custom-config {
-	custom-config-id service:UserDefined
-	custom-command UserDefined
-	config {
-	dirs=
-	files=
-	startidx=50
-	cmdup=
-	cmddown=
-	cmdval=
-	meta=Customize this service to do anything upon startup.
-	starttime=
-	}
-    }
-}
-
-node n17 {
-    type router
-    model host
-    network-config {
-	hostname Controller2
-	!
-	interface eth1
-	 ip address 10.0.7.11/24
-	 ipv6 address 2001:7::11/64
-	!
-	interface eth0
-	 ip address 10.0.3.12/24
-	 ipv6 address 2001:3::12/64
-	!
-    }
-    canvas c1
-    iconcoords {696.0 746.0}
-    labelcoords {696.0 778.0}
-    interface-peer {eth0 n9}
-    interface-peer {eth1 n19}
-}
-
 node n18 {
     type router
     model host
     network-config {
-	hostname sensors1
+	hostname sensors
 	!
 	interface eth0
-	 ip address 10.0.6.10/24
-	 ipv6 address 2001:6::10/64
+	 ip address 10.0.2.14/24
+	 ipv6 address 2001:2::14/64
 	!
     }
     canvas c1
-    iconcoords {506.0 841.0}
-    labelcoords {506.0 873.0}
-    interface-peer {eth0 n16}
+    iconcoords {507.0 935.0}
+    labelcoords {507.0 967.0}
     services {DefaultRoute SSH UserDefined}
     custom-image /home/manikanta/Security_UGP/icons/sensor.png
+    interface-peer {eth0 n17}
 }
 
 node n19 {
     type router
     model host
     network-config {
-	hostname sensors2
+	hostname sensors
 	!
 	interface eth0
-	 ip address 10.0.7.10/24
-	 ipv6 address 2001:7::10/64
+	 ip address 10.0.2.16/24
+	 ipv6 address 2001:2::16/64
 	!
     }
     canvas c1
-    iconcoords {695.0 843.0}
-    labelcoords {695.0 875.0}
-    interface-peer {eth0 n17}
+    iconcoords {699.0 935.0}
+    labelcoords {699.0 967.0}
     custom-image /home/manikanta/Security_UGP/icons/sensor.png
+    interface-peer {eth0 n17}
 }
 
 node n12 {
@@ -345,6 +286,110 @@ node n12 {
     iconcoords {600.0 425.0}
     labelcoords {600.0 457.0}
     interface-peer {eth0 n3}
+}
+
+node n13 {
+    type router
+    model host
+    network-config {
+	hostname sensors
+	!
+	interface eth0
+	 ip address 10.0.2.15/24
+	 ipv6 address 2001:2::15/64
+	!
+    }
+    canvas c1
+    iconcoords {601.0 937.0}
+    labelcoords {601.0 969.0}
+    services {DefaultRoute SSH UserDefined}
+    custom-image /home/manikanta/Security_UGP/icons/sensor.png
+    interface-peer {eth0 n17}
+}
+
+node n20 {
+    type router
+    model host
+    network-config {
+	hostname sensors
+	!
+	interface eth0
+	 ip address 10.0.2.13/24
+	 ipv6 address 2001:2::13/64
+	!
+    }
+    canvas c1
+    iconcoords {409.0 936.0}
+    labelcoords {409.0 968.0}
+    services {DefaultRoute SSH UserDefined}
+    custom-image /home/manikanta/Security_UGP/icons/sensor.png
+    interface-peer {eth0 n17}
+}
+
+node n21 {
+    type router
+    model host
+    network-config {
+	hostname sensors
+	!
+	interface eth0
+	 ip address 10.0.2.17/24
+	 ipv6 address 2001:2::17/64
+	!
+    }
+    canvas c1
+    iconcoords {793.0 935.0}
+    labelcoords {793.0 967.0}
+    services {DefaultRoute SSH UserDefined}
+    custom-image /home/manikanta/Security_UGP/icons/sensor.png
+    interface-peer {eth0 n17}
+}
+
+node n22 {
+    type hub
+    network-config {
+	hostname Controller1
+	!
+    }
+    canvas c1
+    iconcoords {504.0 746.0}
+    labelcoords {504.0 770.0}
+    custom-image /usr/share/core/icons/normal/host.gif
+    interface-peer {e0 n8}
+    interface-peer {e1 n17}
+}
+
+node n16 {
+    type hub
+    network-config {
+	hostname Controller1
+	!
+    }
+    canvas c1
+    iconcoords {698.0 744.0}
+    labelcoords {698.0 768.0}
+    custom-image /usr/share/core/icons/normal/host.gif
+    interface-peer {e4 n9}
+    interface-peer {e0 n17}
+}
+
+node n17 {
+    type hub
+    network-config {
+	hostname Plant
+	!
+    }
+    canvas c1
+    iconcoords {600.0 842.0}
+    labelcoords {600.0 866.0}
+    custom-image /usr/share/core/icons/normal/host.gif
+    interface-peer {e0 n22}
+    interface-peer {e1 n16}
+    interface-peer {e2 n20}
+    interface-peer {e3 n18}
+    interface-peer {e4 n13}
+    interface-peer {e5 n19}
+    interface-peer {e6 n21}
 }
 
 link l1 {
@@ -402,33 +447,54 @@ link l13 {
     bandwidth 0
 }
 
-link l14 {
-    nodes {n16 n8}
-    bandwidth 0
-}
-
-link l15 {
-    nodes {n17 n9}
-    bandwidth 0
-}
-
 link l16 {
     nodes {n15 n9}
     bandwidth 0
 }
 
-link l17 {
-    nodes {n18 n16}
+link l10 {
+    nodes {n3 n12}
     bandwidth 0
 }
 
+link l12 {
+    nodes {n8 n22}
+}
+
+link l15 {
+    nodes {n16 n9}
+}
+
+link l14 {
+    nodes {n22 n17}
+}
+
+link l17 {
+    nodes {n16 n17}
+}
+
 link l18 {
+    nodes {n20 n17}
+    bandwidth 0
+}
+
+link l19 {
+    nodes {n18 n17}
+    bandwidth 0
+}
+
+link l20 {
+    nodes {n13 n17}
+    bandwidth 0
+}
+
+link l21 {
     nodes {n19 n17}
     bandwidth 0
 }
 
-link l10 {
-    nodes {n3 n12}
+link l22 {
+    nodes {n21 n17}
     bandwidth 0
 }
 
@@ -543,7 +609,7 @@ annotation a10 {
 }
 
 annotation a11 {
-    iconcoords {362.0 791.0 840.0 910.0}
+    iconcoords {362.0 791.0 841.0 982.0}
     type rectangle
     label {}
     labelcolor black
@@ -557,7 +623,7 @@ annotation a11 {
 }
 
 annotation a12 {
-    iconcoords {548.0 890.0}
+    iconcoords {507.0 1015.0}
     type text
     label {Field Instruments}
     labelcolor black
@@ -582,7 +648,7 @@ canvas c1 {
 
 option global {
     interface_names no
-    ip_addresses no
+    ip_addresses yes
     ipv6_addresses no
     node_labels yes
     link_labels yes
