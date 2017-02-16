@@ -1,7 +1,7 @@
-OPC1_IP = '10.0.2.11'
+OPC1_IP = '172.27.18.68'
 OPC1_PORT = '6061'
 
-OPC2_IP = '10.0.3.11'
+OPC2_IP = '172.27.18.68'
 OPC2_PORT = '6062'
 
 #Process Variables

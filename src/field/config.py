@@ -1,4 +1,4 @@
-FIELD_IP = '10.0.2.15'
+FIELD_IP = '172.27.18.68'
 FIELD_PORT = 6060
 
 #Process Variables

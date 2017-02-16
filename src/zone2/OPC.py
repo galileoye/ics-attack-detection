@@ -13,9 +13,13 @@ field_client.connect()
 isa_client = ModbusTcpClient(OPC2_IP, OPC2_PORT)
 isa_client.connect()
 
-while 1:
-    if time.time()%60 == 0:
-        break
+# while 1:
+#     now = time.time()
+#     print (int(now)/60)%60
+#     if (int(now)/60)%60 == 0:
+#         print "starting connection"
+#         break
+
 
 
 t = time.time()
@@ -81,3 +85,17 @@ while 1:
     isa_client.write_register(F1, f1)
     isa_client.write_register(F3, f3)
     
+    print(
+        "L1 ",l1,",",
+        "L2 ",l2,",",
+        "T1 ",t1,",",
+        "T2 ",t2,",",
+        "V1 ",v1,",",
+        "V2 ",v2,",",
+        "P  ",p,",",
+        "F1 ",f1,",",
+        "F2 ",f2,",",
+        "F3 ",f3,",",
+        "H  ",h,",",
+        "\n"
+    )

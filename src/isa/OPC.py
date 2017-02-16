@@ -13,15 +13,19 @@ opc1_client.connect()
 opc2_client = ModbusTcpClient(OPC2_IP, OPC2_PORT)
 opc2_client.connect()
 
-while 1:
-    if time.time()%60 == 0:
-        break
+# while 1:
+#     now = time.time()
+#     print (int(now)/60)%60
+#     if (int(now)/60)%60 == 0:
+#         print "starting connection"
+#         break
+
 
 
 t = time.time()
 
 while 1:
-    while time.time() - t < 1:
+    while time.time() - t < 2:
         continue
     t = time.time()
 

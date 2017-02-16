@@ -24,16 +24,22 @@ client.write_register(F2, 0)
 client.write_register(F3, 0)
 client.write_register( H, 1)
 
-while 1:
-    if time.time()%60 == 0:
-        break
-
+# while 1:
+#     then = time.time()
+#     now = time.time()
+#     diff = int(now-then)
+#     m, s = diff//60, diff%60
+#     print s
+#     if s == 0:
+#         print "starting connection"
+#         break
 
 t = time.time()
 
 while True:
-    while time.time() - t < 1:
+    while time.time() - t < 2:
         continue
+    t = time.time()
     # Do something here
     l1 = client.read_holding_registers(L1, 1).registers[0]
     l2 = client.read_holding_registers(L2, 1).registers[0]
@@ -94,3 +100,18 @@ while True:
     client.write_register(F2, f2)
     client.write_register(F3, f3)
     client.write_register( H,  h)
+
+    print(
+        "L1 ",l1,",",
+        "L2 ",l2,",",
+        "T1 ",t1,",",
+        "T2 ",t2,",",
+        "V1 ",v1,",",
+        "V2 ",v2,",",
+        "P  ",p,",",
+        "F1 ",f1,",",
+        "F2 ",f2,",",
+        "F3 ",f3,",",
+        "H  ",h,",",
+        "\n"
+    )
