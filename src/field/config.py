@@ -14,4 +14,4 @@ F2  = 9
 F3  = 10
 H   = 11
 
-heat_coefficient = 50
+heat_coefficient = 100

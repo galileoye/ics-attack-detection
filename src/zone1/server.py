@@ -1,3 +1,4 @@
+#!/usr/bin/python
 #RTU Server
 from config import *
 from pymodbus.server.sync import StartTcpServer

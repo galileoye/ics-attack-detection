@@ -1,3 +1,4 @@
+#!/usr/bin/python
 #RTU Client
 from config import *
 from pymodbus.client.sync import ModbusTcpClient
@@ -12,17 +13,17 @@ client = ModbusTcpClient(FIELD_IP, FIELD_PORT)
 client.connect()
 
 # Initialize Registers Here
-client.write_register(L1, 90)
-client.write_register(L2, 40)
-client.write_register(T1, 95)
-client.write_register(T2, 50)
-client.write_register(V1, 0)
-client.write_register(V2, 0)
-client.write_register( P, 0)
-client.write_register(F1, 0)
-client.write_register(F2, 0)
-client.write_register(F3, 0)
-client.write_register( H, 1)
+client.write_register(L1, 90.0)
+client.write_register(L2, 40.0)
+client.write_register(T1, 95.0)
+client.write_register(T2, 50.0)
+client.write_register(V1, 0.0)
+client.write_register(V2, 0.0)
+client.write_register( P, 0.0)
+client.write_register(F1, 0.0)
+client.write_register(F2, 0.0)
+client.write_register(F3, 0.0)
+client.write_register( H, 1.0)
 
 # while 1:
 #     then = time.time()
@@ -41,10 +42,10 @@ while True:
         continue
     t = time.time()
     # Do something here
-    l1 = client.read_holding_registers(L1, 1).registers[0]
-    l2 = client.read_holding_registers(L2, 1).registers[0]
-    t1 = client.read_holding_registers(T1, 1).registers[0]
-    t2 = client.read_holding_registers(T2, 1).registers[0]
+    l1 = float(client.read_holding_registers(L1, 1).registers[0])
+    l2 = float(client.read_holding_registers(L2, 1).registers[0])
+    t1 = float(client.read_holding_registers(T1, 1).registers[0])
+    t2 = float(client.read_holding_registers(T2, 1).registers[0])
     v1 = client.read_holding_registers(V1, 1).registers[0]
     v2 = client.read_holding_registers(V2, 1).registers[0]
     p  = client.read_holding_registers( P, 1).registers[0]
@@ -74,32 +75,31 @@ while True:
 
     #compute process variables
     if h == 1:
-        t1 = t1 + heat_coefficient/l1
+        t1 = t1 + (1.0*heat_coefficient)/(1.0*l1)
     
     if h == 0:
-        t1 = t1 - 1
+        t1 = t1 - 1.0
     
     if f1 == 1:
-        l1 = l1 - 1
-        l2 = l2 + 1
-        t2 = t2 + (1/l2)(t1 - t2)
+        l1 > 0:
+            l1 = l1 - 1.0
+        l2 = l2 + 1.0
+        if l2>0:
+            t2 = t2 + (t1 - t2)/l2
 
     if f2 == 1:
-        l1 = l1 + 1
-        l2 = l2 - 1
-        t1 = t1 + (1/l1)(t2 - t1)
+        l1 = l1 + 1.0
+        if l2 > 0:
+            l2 = l2 - 1.0
+        t1 = t1 + (1.0/l1)(t2 - t1)
 
     client.write_register(L1, l1)
     client.write_register(L2, l2)
     client.write_register(T1, t1)
     client.write_register(T2, t2)
-    client.write_register(V1, v1)
-    client.write_register(V2, v2)
-    client.write_register( P,  p)
     client.write_register(F1, f1)
     client.write_register(F2, f2)
     client.write_register(F3, f3)
-    client.write_register( H,  h)
 
     print(
         "L1 ",l1,",",

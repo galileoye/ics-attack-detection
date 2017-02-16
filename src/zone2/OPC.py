@@ -1,3 +1,4 @@
+#!/usr/bin/python
 #MTU Server
 from config import *
 from pymodbus.client.sync import ModbusTcpClient
@@ -31,10 +32,10 @@ while 1:
     #Do Something
 
     #Get register values. Some from field. Some from ISA above
-    l1 = isa_client.read_holding_registers(L1, 1).registers[0]
-    l2 = field_client.read_holding_registers(L2, 1).registers[0]
-    t1 = isa_client.read_holding_registers(T1, 1).registers[0]
-    t2 = field_client.read_holding_registers(T2, 1).registers[0]
+    l1 = float(isa_client.read_holding_registers(L1, 1).registers[0])
+    l2 = float(field_client.read_holding_registers(L2, 1).registers[0])
+    t1 = float(isa_client.read_holding_registers(T1, 1).registers[0])
+    t2 = float(field_client.read_holding_registers(T2, 1).registers[0])
     v1 = field_client.read_holding_registers(V1, 1).registers[0]
     v2 = isa_client.read_holding_registers(V2, 1).registers[0]
     p  = field_client.read_holding_registers( P, 1).registers[0]
@@ -84,6 +85,10 @@ while 1:
     isa_client.write_register( P,  p)
     isa_client.write_register(F1, f1)
     isa_client.write_register(F3, f3)
+    
+    field_client.write_register(V1, v1)
+    field_client.write_register( P,  p)
+    
     
     print(
         "L1 ",l1,",",

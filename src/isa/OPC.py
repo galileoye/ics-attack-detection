@@ -1,3 +1,4 @@
+#!/usr/bin/python
 #MTU Server
 from config import *
 from pymodbus.client.sync import ModbusTcpClient
@@ -30,10 +31,10 @@ while 1:
     t = time.time()
 
     #Read registers from the specific zone
-    l1 = opc1_client.read_holding_registers(L1, 1).registers[0]
-    l2 = opc2_client.read_holding_registers(L2, 1).registers[0]
-    t1 = opc1_client.read_holding_registers(T1, 1).registers[0]
-    t2 = opc2_client.read_holding_registers(T2, 1).registers[0]
+    l1 = float(opc1_client.read_holding_registers(L1, 1).registers[0])
+    l2 = float(opc2_client.read_holding_registers(L2, 1).registers[0])
+    t1 = float(opc1_client.read_holding_registers(T1, 1).registers[0])
+    t2 = float(opc2_client.read_holding_registers(T2, 1).registers[0])
     v1 = opc2_client.read_holding_registers(V1, 1).registers[0]
     v2 = opc1_client.read_holding_registers(V2, 1).registers[0]
     p  = opc2_client.read_holding_registers( P, 1).registers[0]
