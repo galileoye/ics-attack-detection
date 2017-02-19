@@ -38,7 +38,7 @@ client.write_register( H, 1.0)
 t = time.time()
 
 while True:
-    while time.time() - t < 2:
+    while time.time() - t < 1:
         continue
     t = time.time()
     # Do something here
@@ -74,24 +74,26 @@ while True:
         f2 = 0
 
     #compute process variables
+    # t2 = t2 - (1.0*heat_coefficient)/(1.0*l1)
     if h == 1:
-        t1 = t1 + (1.0*heat_coefficient)/(1.0*l1)
+        if l1 > 0:
+            t1 = t1 + (1.0*heat_coefficient)/(1.0*l1)
     
     if h == 0:
-        t1 = t1 - 1.0
+        t1 = t1 - (1.0*heat_coefficient)/(1.0*l1)
     
     if f1 == 1:
-        l1 > 0:
+        if l1 > 0:
             l1 = l1 - 1.0
         l2 = l2 + 1.0
         if l2>0:
-            t2 = t2 + (t1 - t2)/l2
+            t2 = t2 + (1.0/l2)*(t1 - t2)
 
     if f2 == 1:
         l1 = l1 + 1.0
         if l2 > 0:
             l2 = l2 - 1.0
-        t1 = t1 + (1.0/l1)(t2 - t1)
+        t1 = t1 + (1.0/l1)*(t2 - t1)
 
     client.write_register(L1, l1)
     client.write_register(L2, l2)

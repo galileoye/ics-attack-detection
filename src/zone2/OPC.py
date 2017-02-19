@@ -45,37 +45,45 @@ while 1:
     h  = isa_client.read_holding_registers( H, 1).registers[0]
 
 
-    if l1 > 85:
-        p = 1
+    #Contro p and v1
+    if l1 > 85 and l2 < 50:
         v1 = 1
+        p = 1
+        # if t1 > 90 and t2 > 90:
+        #     v1 = 1
+        #     p = 1
+            
+        # if t1 < 60 and t2 > 90:
+        #     v1 = 1
+        #     p  = 1
+
+        # if t1 > 90 and t2 < 60:
+        #     v1 = 1
+        #     p  = 1
+        
+        # if t1 < 60 and t2 < 60:
+        #     v1 = 1
+        #     p = 1
+
+    if l1 < 50 and l2 > 85:
+        v1 = 0
+        p = 0
+        # if t1 > 90 and t2 > 90:
+        #     v1 = 0
+        #     p = 0
+            
+        # if t1 < 60 and t2 > 90:
+        #     v1 = 0
+        #     p  = 0
+
+        # if t1 > 90 and t2 < 60:
+        #     v1 = 0
+        #     p  = 0
+        
+        # if t1 < 60 and t2 < 60:
+        #     v1 = 0
+        #     p = 0
     
-    if l1 < 50:
-        p = 0
-        v1 = 0
-
-    if l2 > 85:
-        v1 = 0
-        p = 0
-    
-    if l2 < 50:
-        p = 1
-        v1 = 1
-
-    if t1 > 90:
-        p = 1
-        v1 = 1
-
-    if t1 < 60:
-        v1 = 0
-        p = 0
-
-    if t2 > 90:
-        v1 = 0
-        p = 0
-
-    if t2 < 60:
-        p = 1
-        v1 = 1
         
 
     #write values to isa registers
