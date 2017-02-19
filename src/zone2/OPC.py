@@ -26,7 +26,7 @@ isa_client.connect()
 t = time.time()
 
 while 1:
-    while time.time() - t < 1:
+    while time.time() - t < 0.2:
         continue
     t = time.time()
     #Do Something

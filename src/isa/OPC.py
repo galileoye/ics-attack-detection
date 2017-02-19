@@ -3,7 +3,6 @@
 from config import *
 from pymodbus.client.sync import ModbusTcpClient
 import time
-
 import logging
 logging.basicConfig()
 log = logging.getLogger()
@@ -14,19 +13,10 @@ opc1_client.connect()
 opc2_client = ModbusTcpClient(OPC2_IP, OPC2_PORT)
 opc2_client.connect()
 
-# while 1:
-#     now = time.time()
-#     print (int(now)/60)%60
-#     if (int(now)/60)%60 == 0:
-#         print "starting connection"
-#         break
-
-
-
 t = time.time()
 
 while 1:
-    while time.time() - t < 2:
+    while time.time() - t < 0.2:
         continue
     t = time.time()
 
@@ -58,6 +48,7 @@ while 1:
         "H  ",h,",",
         "\n"
     )
+
     #Write to the register of the other zone
     opc2_client.write_register(L1, l1)
     opc1_client.write_register(L2, l2)

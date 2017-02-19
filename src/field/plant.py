@@ -38,7 +38,7 @@ client.write_register( H, 1.0)
 t = time.time()
 
 while True:
-    while time.time() - t < 1:
+    while time.time() - t < 0.1:
         continue
     t = time.time()
     # Do something here
