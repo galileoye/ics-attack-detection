@@ -1,12 +1,5 @@
-FIELD_IP = '172.27.18.68'
-FIELD_PORT = 6060
-
-OPC2_IP = '172.27.18.68'
-OPC2_PORT = 6062
-
 FAKE_FIELD_IP = '172.27.18.68'
 FAKE_FIELD_PORT = 9090
-
 
 #Process Variables
 L1  = 0
@@ -20,3 +13,6 @@ F1  = 7
 F2  = 9
 F3  = 10
 H   = 11
+
+heat_coefficient = 50
+heat_coefficient_2 = 50
