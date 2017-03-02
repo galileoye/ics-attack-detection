@@ -41,6 +41,7 @@ class S:
         while True:
             while time.time() - t < 0.2:
                 continue
+            t = time.time()
             l1 = float(fake_client.read_holding_registers(L1, 1).registers[0])
             l2 = float(fake_client.read_holding_registers(L2, 1).registers[0])
             t1 = float(fake_client.read_holding_registers(T1, 1).registers[0])

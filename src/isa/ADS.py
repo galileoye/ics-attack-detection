@@ -6,6 +6,9 @@ import time
 import numpy as np
 import logging
 from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+import matplotlib.animation as anim
+
 logging.basicConfig()
 log = logging.getLogger()
 log.setLevel(logging.INFO)
@@ -48,10 +51,11 @@ Data = np.load("data.npy")
 pca.fit(Data)
 print "PCA Built"
 t = time.time()
-while 1:
-    while time.time() - t < 0.2:
-        continue
-    t = time.time()
+i = 0
+fig = plt.figure()
+ax = fig.add_subplot(1,1,1)
+y = []
+def update(i):
     #Read registers from the specific zone
     l1 = float(opc1_client.read_holding_registers(L1, 1).registers[0])
     l2 = float(opc2_client.read_holding_registers(L2, 1).registers[0])
@@ -67,4 +71,11 @@ while 1:
 
     v = np.array([[l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h]])
     v_transform = pca.transform(v)
-    print v_transform[0]
+    # print v_transform[0]
+    y.append(v_transform[0])
+    x = range(len(y))
+    ax.clear()
+    ax.plot(x, y)
+
+a = anim.FuncAnimation(fig, update, frames=1000, repeat=False)
+plt.show()
