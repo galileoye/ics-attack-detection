@@ -35,6 +35,7 @@ while 1:
 
     #Do something! Maybe logging
     print(
+        "isa",",",
         "L1 ",l1,",",
         "L2 ",l2,",",
         "T1 ",t1,",",

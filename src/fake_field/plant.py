@@ -131,7 +131,8 @@ while True:
             t1 = t1 + (1.0*heat_coefficient)/(1.0*l1)
     
     if h == 0:
-        t1 = t1 - (1.0*heat_coefficient)/(1.0*l1)
+        if l1 > 0:
+            t1 = t1 - (1.0*heat_coefficient)/(1.0*l1)
     
     if f1 == 1:
         if l1 > 0:
@@ -144,7 +145,8 @@ while True:
         l1 = l1 + 1.0
         if l2 > 0:
             l2 = l2 - 1.0
-        t1 = t1 + (1.0/l1)*(t2 - t1)
+        if l1 > 0:
+            t1 = t1 + (1.0/l1)*(t2 - t1)
 
     fake_client.write_register(L1, l1)
     fake_client.write_register(L2, l2)
@@ -159,6 +161,7 @@ while True:
     fake_client.write_register(H, h)
 
     print(
+        "fake plant",",",
         "L1 ",l1,",",
         "L2 ",l2,",",
         "T1 ",t1,",",
