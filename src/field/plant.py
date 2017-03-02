@@ -77,7 +77,7 @@ while True:
     # t2 = t2 - (1.0*heat_coefficient)/(1.0*l1)
     if h == 1:
         if l1 > 0:
-            t1 = t1 + (1.0*heat_coefficient)/(1.0*l1)
+            t1 = t1 + (1.0*heat_coefficient_2)/(1.0*l1)
     
     if h == 0:
         if l1>0:
