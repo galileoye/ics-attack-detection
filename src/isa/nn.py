@@ -36,10 +36,10 @@ seq = 50
 Data = []
 Data = np.load("data.npy")
 X = []
-for i in range(Data.shape[0]-seq-10):
-    t = 0
+for i in range(Data.shape[0]-seq-20):
+    t = 10
     tmp = []
-    while t < seq:
+    while t < seq + 10:
         tmp.append(Data[t + i])
         t += 1
     X.append(tmp)
@@ -76,7 +76,7 @@ print('Test accuracy:', score[1])
 model_json = model.to_json()
 with open("model.json","w") as json_file:
     json_file.write(model_json)
-model.save_weights("model_weights.h5")
+model.save_weights("model_weights.h5", overwrite=True)
 print("Saved the Model to Disk")
 
 json_file = open('model.json', 'r')
@@ -106,5 +106,9 @@ while True:
     x.append(v)
     if len(x) == seq:
         x = np.array([x])
-        print model.predict(x, batch_size=1, verbose=0)
+        score = model.predict(x, batch_size=1, verbose=0)[0][0]
+        if score < 0.90:
+            print score, "Compromised"
+        else:
+            print score
         x = []
