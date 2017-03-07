@@ -77,5 +77,5 @@ def update(i):
     ax.clear()
     ax.plot(x, y)
 
-a = anim.FuncAnimation(fig, update, frames=10000, repeat=False)
+a = anim.FuncAnimation(fig, update, frames=100000, repeat=False)
 plt.show()
