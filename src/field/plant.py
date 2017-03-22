@@ -105,18 +105,5 @@ while True:
     client.write_register(F2, f2)
     client.write_register(F3, f3)
 
-    print(
-        "plant",",",
-        "L1 ",l1,",",
-        "L2 ",l2,",",
-        "T1 ",t1,",",
-        "T2 ",t2,",",
-        "V1 ",v1,",",
-        "V2 ",v2,",",
-        "P  ",p,",",
-        "F1 ",f1,",",
-        "F2 ",f2,",",
-        "F3 ",f3,",",
-        "H  ",h,",",
-        "\n"
-    )
+    printvalues("field", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)
+    
