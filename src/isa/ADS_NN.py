@@ -69,9 +69,12 @@ def update(i):
             score = "{0:.2f}".format(model.predict(x, batch_size=1, verbose=0)[0][0])
             y.append(score)
             ax.clear()
+            ax.set_title("Neural Network Based Prediction.")
+            ax.set_xlabel("Evaluation Point")
+            ax.set_ylabel("Score")
             ax.set_ylim([0,1])
+            ax.set_xlim([0, 1.33*len(y)])
             ax.plot(range(len(y)), y)
-            ax.set_ylim([0,1])
             if float(score) < 0.93:
                 print score, "Compromised"
             else:

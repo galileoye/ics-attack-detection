@@ -34,8 +34,8 @@ def printvalues(mode, L1, L2, T1, T2, V1, V2, P, F1, F2, F3, H):
 
 
 datalen = 1000
-seq = 50
-padding = 5
+seq = 30
+padding = 10
 batch_size = 64
 nb_classes = 1
 nb_epoch = 5
