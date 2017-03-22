@@ -24,6 +24,7 @@ Data = []
 while 1:
     while time.time() - t < 0.2:
         continue
+
     t = time.time()
 
     #Read registers from the specific zone
@@ -40,7 +41,7 @@ while 1:
     h  = opc1_client.read_holding_registers( H, 1).registers[0]
 
     Data.append([l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h])
-    if len(Data) > 1000:
+    if len(Data) > datalen:
         print "Data Logged..."
         Data = np.array(Data)
         np.save("data", Data)

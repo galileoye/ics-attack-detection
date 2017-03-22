@@ -32,23 +32,8 @@ while 1:
     f2 = opc1_client.read_holding_registers(F2, 1).registers[0]
     f3 = opc2_client.read_holding_registers(F3, 1).registers[0]
     h  = opc1_client.read_holding_registers( H, 1).registers[0]
-
-    #Do something! Maybe logging
-    print(
-        "isa",",",
-        "L1 ",l1,",",
-        "L2 ",l2,",",
-        "T1 ",t1,",",
-        "T2 ",t2,",",
-        "V1 ",v1,",",
-        "V2 ",v2,",",
-        "P  ",p,",",
-        "F1 ",f1,",",
-        "F2 ",f2,",",
-        "F3 ",f3,",",
-        "H  ",h,",",
-        "\n"
-    )
+    
+    printvalues("isa", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)
 
     #Write to the register of the other zone
     opc2_client.write_register(L1, l1)
@@ -62,4 +47,3 @@ while 1:
     opc2_client.write_register(F2, f2)
     opc1_client.write_register(F3, f3)
     opc2_client.write_register( H,  h)
-    
