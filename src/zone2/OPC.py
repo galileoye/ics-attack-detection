@@ -72,10 +72,10 @@ class S:
             isa_client.write_register( P,  p)
             isa_client.write_register(F1, f1)
             isa_client.write_register(F3, f3)
-            printvalues("compromised zone2", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)
+            #printvalues("compromised zone2", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)
 
 
-signal.signal(signal.SIGINT, S())
+# signal.signal(signal.SIGINT, S())
 
 
 t = time.time()
@@ -157,7 +157,7 @@ while 1:
         field_client.write_register( P,  p)
         
         
-        printvalues("zone2", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)
+        #printvalues("zone2", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)
 
     else:
         l1 = float(fake_client.read_holding_registers(L1, 1).registers[0])
@@ -178,4 +178,4 @@ while 1:
         isa_client.write_register( P,  p)
         isa_client.write_register(F1, f1)
         isa_client.write_register(F3, f3)
-        printvalues("compromised zone2", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)
+        #printvalues("compromised zone2", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)

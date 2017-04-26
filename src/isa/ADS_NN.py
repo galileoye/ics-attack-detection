@@ -72,9 +72,9 @@ def update(i):
             ax.set_title("Neural Network Based Prediction.")
             ax.set_xlabel("Evaluation Point")
             ax.set_ylabel("Score")
-            ax.set_ylim([0,1])
-            ax.set_xlim([0, 1.33*len(y)])
-            ax.scatter(range(len(y)), y)
+            ax.set_ylim([0,1.5])
+            ax.set_xlim([0, 1.5*len(y)])
+            ax.plot(range(len(y)), y, "x")
             if float(score) < 0.93:
                 print score, "Compromised"
             else:
@@ -92,5 +92,5 @@ while 1:
     if to == 0 or to == 25 or to == 50 or to == 75:
         break
 
-a = anim.FuncAnimation(fig, update, frames=SIM_TIME/seq, repeat=False)
+a = anim.FuncAnimation(fig, update, frames=SIM_TIME*10/seq, repeat=False)
 plt.show()

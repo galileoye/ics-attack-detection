@@ -176,5 +176,5 @@ while True:
     fake_client.write_register(P, p)
     fake_client.write_register(H, h)
 
-    printvalues("fake field", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)
+    #printvalues("fake field", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)
     

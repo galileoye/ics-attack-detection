@@ -117,5 +117,5 @@ while True:
     client.write_register(F2, f2)
     client.write_register(F3, f3)
 
-    printvalues("field", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)
+    #printvalues("field", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)
     

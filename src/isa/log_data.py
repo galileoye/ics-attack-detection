@@ -18,10 +18,23 @@ opc1_client.connect()
 opc2_client = ModbusTcpClient(OPC2_IP, OPC2_PORT)
 opc2_client.connect()
 
-t = time.time()
+print "Simulation will start when the time is 0, 25, 50 ,75"
+to = 0
+while 1:
+    toot = int(time.time())%100
+    if to == toot - 1:
+        print toot
+    to = toot
+    # print to
+    if to == 0 or to == 25 or to == 50 or to == 75:
+        break
 
+t = time.time()
+T = t
 Data = []
 while 1:
+    if time.time() - T > SIM_TIME:
+        break
     while time.time() - t < 0.2:
         continue
 
@@ -41,8 +54,8 @@ while 1:
     h  = opc1_client.read_holding_registers( H, 1).registers[0]
 
     Data.append([l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h])
-    if len(Data) > datalen:
-        print "Data Logged..."
-        Data = np.array(Data)
-        np.save("data", Data)
-        break
+
+
+print "Data Logged..."
+Data = np.array(Data)
+np.save("data", Data)

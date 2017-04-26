@@ -53,7 +53,7 @@ def update(i):
     ax.set_title("PCA Based Prediction (Top 3 Scores).")
     ax.set_ylabel("Top 3 scores")
     ax.set_xlabel("Evaluation Points")
-    ax.set_xlim([0, 1.33*len(y)])
+    ax.set_xlim([0, 1.5*len(y)])
     ax.plot(x, y, "x")
 
 

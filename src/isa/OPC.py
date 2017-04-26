@@ -47,7 +47,7 @@ while 1:
     f3 = opc2_client.read_holding_registers(F3, 1).registers[0]
     h  = opc1_client.read_holding_registers( H, 1).registers[0]
     
-    printvalues("isa", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)
+    #printvalues("isa", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)
 
     #Write to the register of the other zone
     opc2_client.write_register(L1, l1)
