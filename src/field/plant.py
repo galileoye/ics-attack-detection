@@ -50,7 +50,7 @@ T = time.time()
 while True:
     if time.time() - T > SIM_TIME:
         break
-    while time.time() - t < 0.1:
+    while time.time() - t < SIM_STEP:
         continue
     t = time.time()
     # Do something here
@@ -117,5 +117,5 @@ while True:
     client.write_register(F2, f2)
     client.write_register(F3, f3)
 
-    #printvalues("field", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)
+    printvalues("field", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)
     

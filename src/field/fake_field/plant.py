@@ -57,7 +57,7 @@ while True:
     if time.time() - tmp > SIM_TIME:
         break
     
-    while time.time() - t < 0.1:
+    while time.time() - t < SIM_STEP:
         continue
 
     t = time.time()
@@ -73,7 +73,7 @@ while True:
     f2 = fake_client.read_holding_registers(F2, 1).registers[0]
     f3 = fake_client.read_holding_registers(F3, 1).registers[0]
     h  = fake_client.read_holding_registers( H, 1).registers[0]
-    if time.time() - T > 0.2:
+    if time.time() - T > 2*SIM_STEP:
         T = time.time()
         # Control v2 and h
         if l1 > 85 and l2 < 50:
@@ -176,5 +176,5 @@ while True:
     fake_client.write_register(P, p)
     fake_client.write_register(H, h)
 
-    #printvalues("fake field", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)
+    printvalues("fake field", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)
     

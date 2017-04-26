@@ -47,7 +47,7 @@ def update(i):
     t = time.time()
     x = []
     while True:
-        while time.time()-t < 0.1:
+        while time.time()-t < SIM_STEP:
             continue
         t = time.time()
         l1 = float(opc1_client.read_holding_registers(L1, 1).registers[0])
@@ -73,8 +73,10 @@ def update(i):
             ax.set_xlabel("Evaluation Point")
             ax.set_ylabel("Score")
             ax.set_ylim([0,1.5])
-            ax.set_xlim([0, 1.5*len(y)])
-            ax.plot(range(len(y)), y, "x")
+            tx = np.array(range(len(y)))*seq
+            ax.set_xlim([0, 1.5*tx[-1]])
+            # tx = [tu*seq for tu in tx]
+            ax.plot(tx, y, "x")
             if float(score) < 0.93:
                 print score, "Compromised"
             else:
@@ -92,5 +94,5 @@ while 1:
     if to == 0 or to == 25 or to == 50 or to == 75:
         break
 
-a = anim.FuncAnimation(fig, update, frames=SIM_TIME*10/seq, repeat=False)
+a = anim.FuncAnimation(fig, update, frames=int(SIM_TIME/(SIM_STEP*seq)), repeat=False)
 plt.show()

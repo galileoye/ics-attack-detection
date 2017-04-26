@@ -37,7 +37,7 @@ T = time.time()
 while 1:
     if time.time() - T > SIM_TIME:
         break
-    while time.time() - t < 0.2:
+    while time.time() - t < 2*SIM_STEP:
         continue
     t = time.time()
     #Do Something
@@ -103,4 +103,4 @@ while 1:
     field_client.write_register( H,  h)
 
 
-    #printvalues("zone1", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)
+    printvalues("zone1", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)

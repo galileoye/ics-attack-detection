@@ -2,7 +2,7 @@ FAKE_FIELD_IP = '172.27.18.68'
 FAKE_FIELD_PORT = 9095
 
 SIM_TIME = 200
-
+SIM_STEP = 0.1
 #Process Variables
 L1  = 0
 L2  = 1

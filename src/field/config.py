@@ -2,7 +2,7 @@ FIELD_IP = '172.27.18.68'
 FIELD_PORT = 6060
 
 SIM_TIME = 200
-
+SIM_STEP = 0.1
 #Process Variables
 L1  = 0
 L2  = 1

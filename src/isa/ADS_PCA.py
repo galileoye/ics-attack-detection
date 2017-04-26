@@ -50,11 +50,12 @@ def update(i):
     y.append(v_transform[0])
     x = range(len(y))
     ax.clear()
-    ax.set_title("PCA Based Prediction (Top 3 Scores).")
+    ax.set_title("PCA Based Detection (Top 3 Scores).")
     ax.set_ylabel("Top 3 scores")
     ax.set_xlabel("Evaluation Points")
     ax.set_xlim([0, 1.5*len(y)])
     ax.plot(x, y, "x")
+    print i
 
 
 print "Simulation will start when the time is 0, 25, 50 ,75"
@@ -68,5 +69,5 @@ while 1:
     if to == 0 or to == 25 or to == 50 or to == 75:
         break
 
-a = anim.FuncAnimation(fig, update, frames=SIM_TIME*5, interval=200, repeat=False)
+a = anim.FuncAnimation(fig, update, frames=int(SIM_TIME/SIM_STEP), interval=int(1000*SIM_STEP), repeat=False)
 plt.show()

@@ -51,7 +51,7 @@ class S:
         print('You pressed Ctrl+C!')
         t = time.time()
         while True:
-            while time.time() - t < 0.2:
+            while time.time() - t < 2*SIM_STEP:
                 continue
             t = time.time()
             l1 = float(fake_client.read_holding_registers(L1, 1).registers[0])
@@ -84,8 +84,8 @@ T = time.time()
 while 1:
     if time.time() - T > SIM_TIME:
         break
-    if time.time() - T < SIM_TIME/2:
-        while time.time() - t < 0.2:
+    if time.time() - T < SIM_TIME:
+        while time.time() - t < 2*SIM_STEP:
             continue
         t = time.time()
         #Do Something
@@ -157,7 +157,7 @@ while 1:
         field_client.write_register( P,  p)
         
         
-        #printvalues("zone2", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)
+        printvalues("zone2", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)
 
     else:
         l1 = float(fake_client.read_holding_registers(L1, 1).registers[0])
@@ -178,4 +178,4 @@ while 1:
         isa_client.write_register( P,  p)
         isa_client.write_register(F1, f1)
         isa_client.write_register(F3, f3)
-        #printvalues("compromised zone2", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)
+        printvalues("compromised zone2", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)

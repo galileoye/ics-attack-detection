@@ -35,7 +35,7 @@ Data = []
 while 1:
     if time.time() - T > SIM_TIME:
         break
-    while time.time() - t < 0.2:
+    while time.time() - t < 2*SIM_STEP:
         continue
 
     t = time.time()
