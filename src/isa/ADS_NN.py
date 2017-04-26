@@ -74,12 +74,23 @@ def update(i):
             ax.set_ylabel("Score")
             ax.set_ylim([0,1])
             ax.set_xlim([0, 1.33*len(y)])
-            ax.plot(range(len(y)), y)
+            ax.scatter(range(len(y)), y)
             if float(score) < 0.93:
                 print score, "Compromised"
             else:
                 print score
             break
 
-a = anim.FuncAnimation(fig, update, frames=100000, repeat=False)
+print "Simulation will start when the time is 0, 25, 50 ,75"
+to = 0
+while 1:
+    toot = int(time.time())%100
+    if to == toot - 1:
+        print toot
+    to = toot
+    # print to
+    if to == 0 or to == 25 or to == 50 or to == 75:
+        break
+
+a = anim.FuncAnimation(fig, update, frames=SIM_TIME/seq, repeat=False)
 plt.show()

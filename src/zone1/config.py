@@ -4,6 +4,7 @@ FIELD_PORT = 6060
 OPC1_IP = '172.27.18.68'
 OPC1_PORT = 6061
 
+SIM_TIME = 200
 
 #Process Variables
 L1  = 0

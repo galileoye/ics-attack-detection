@@ -30,6 +30,7 @@ i = 0
 fig = plt.figure()
 ax = fig.add_subplot(1,1,1)
 y = []
+
 def update(i):
     #Read registers from the specific zone
     l1 = float(opc1_client.read_holding_registers(L1, 1).registers[0])
@@ -53,7 +54,19 @@ def update(i):
     ax.set_ylabel("Top 3 scores")
     ax.set_xlabel("Evaluation Points")
     ax.set_xlim([0, 1.33*len(y)])
-    ax.plot(x, y)
+    ax.plot(x, y, "x")
 
-a = anim.FuncAnimation(fig, update, frames=100000, repeat=False)
+
+print "Simulation will start when the time is 0, 25, 50 ,75"
+to = 0
+while 1:
+    toot = int(time.time())%100
+    if to == toot - 1:
+        print toot
+    to = toot
+    # print to
+    if to == 0 or to == 25 or to == 50 or to == 75:
+        break
+
+a = anim.FuncAnimation(fig, update, frames=SIM_TIME*5, interval=200, repeat=False)
 plt.show()

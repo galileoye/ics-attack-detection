@@ -20,12 +20,23 @@ isa_client.connect()
 #     if (int(now)/60)%60 == 0:
 #         print "starting connection"
 #         break
-
+print "Simulation will start when the time is 0, 25, 50 ,75"
+to = 0
+while 1:
+    toot = int(time.time())%100
+    if to == toot - 1:
+        print toot
+    to = toot
+    # print to
+    if to == 0 or to == 25 or to == 50 or to == 75:
+        break
 
 
 t = time.time()
-
+T = time.time()
 while 1:
+    if time.time() - T > SIM_TIME:
+        break
     while time.time() - t < 0.2:
         continue
     t = time.time()

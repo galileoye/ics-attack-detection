@@ -4,6 +4,8 @@ OPC1_PORT = '6061'
 OPC2_IP = '172.27.18.68'
 OPC2_PORT = '6072'
 
+SIM_TIME = 200
+
 #Process Variables
 L1  = 0
 L2  = 1
