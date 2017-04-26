@@ -55,7 +55,6 @@ def update(i):
     ax.set_xlabel("Evaluation Points")
     ax.set_xlim([0, 1.5*len(y)])
     ax.plot(x, y, "x")
-    print i
 
 
 print "Simulation will start when the time is 0, 25, 50 ,75"
