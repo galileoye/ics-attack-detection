@@ -24,6 +24,7 @@ import matplotlib.animation as anim
 
 Data = []
 Data = np.load("data.npy")
+Data = Data[:Data.shape[0]/3]
 X = []
 for i in range(Data.shape[0]-seq-padding):
     t = padding

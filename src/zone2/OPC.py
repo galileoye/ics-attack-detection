@@ -84,7 +84,7 @@ T = time.time()
 while 1:
     if time.time() - T > SIM_TIME:
         break
-    if time.time() - T < SIM_TIME:
+    if time.time() - T < SIM_TIME/2:
         while time.time() - t < 2*SIM_STEP:
             continue
         t = time.time()
@@ -158,8 +158,10 @@ while 1:
         
         
         printvalues("zone2", l1, l2, t1, t2, v1, v2, p, f1, f2, f3, h)
-
     else:
+        while time.time() - t < 2*SIM_STEP:
+            continue
+        t = time.time()
         l1 = float(fake_client.read_holding_registers(L1, 1).registers[0])
         l2 = float(fake_client.read_holding_registers(L2, 1).registers[0])
         t1 = float(fake_client.read_holding_registers(T1, 1).registers[0])
@@ -171,7 +173,8 @@ while 1:
         f2 = fake_client.read_holding_registers(F2, 1).registers[0]
         f3 = fake_client.read_holding_registers(F3, 1).registers[0]
         h  = fake_client.read_holding_registers( H, 1).registers[0]
-
+        v1 = 0
+        p = 0
         isa_client.write_register(L2, l2)
         isa_client.write_register(T2, t2)
         isa_client.write_register(V1, v1)

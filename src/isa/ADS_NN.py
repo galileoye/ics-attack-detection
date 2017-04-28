@@ -66,13 +66,16 @@ def update(i):
         x.append(v)
         if len(x) == seq:
             x = np.array([x])
-            score = "{0:.2f}".format(model.predict(x, batch_size=1, verbose=0)[0][0])
+            prediction = model.predict(x, batch_size=1, verbose=0)[0][0]
+            # if prediction < 0.9:
+            #     prediction = prediction - 0.15
+            score = "{0:.2f}".format(prediction)
             y.append(score)
             ax.clear()
             ax.set_title("Neural Network Based Prediction.")
             ax.set_xlabel("Evaluation Point")
             ax.set_ylabel("Score")
-            ax.set_ylim([0,1.5])
+            ax.set_ylim([0.5,1.05])
             tx = np.array(range(len(y)))*seq
             ax.set_xlim([0, 1.5*tx[-1]])
             # tx = [tu*seq for tu in tx]
